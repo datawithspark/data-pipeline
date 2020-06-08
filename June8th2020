@@ -1,1 +1,56 @@
+HDFS Architecture:
+https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html
+
+Node - Machine - Computer( RAM - HDD - CPU - Without Moniotr)
+
+edge node(Client Machine) => if we start running a job here, first it will connect Name Node.
+file1.txt
+--------
+this is a new file.
+it has 100 lines.
+----------
+process.py => when I run this in edge node, this - 1, is -1 .... lines -1.
+
+----
+file1.txt is saved dn01, dn02, dn05 (3 replication factor)
+
+---- job- 
+dn01, dn02, dn05
+
+---processing... will happen at data nodes---
+processed parallely in different nodes, so that process will be completed quickly.
+---
+data node - it can store data, also it can be used be for computing - processing... 
+---
+
+--data placement---
+1GB input data divided into 8 blocks. - 1024MB/128MB --
+will be saved in same data node or different node and where are the files are saved are called HDFS(hadoop file system).
+dn01 - 512mb
+b1-4
+d02 - 512mb
+b4-b8
+---processing-- 1gb file -- it will invoke parallel process in dn01 and dn02.. finding who paid credit card bill before due date.
+logic will be shifted t0 dnodes and where the processing will be happened. b1-4 => 100 customers(mapping) and b4-b8 => 1 customer
+100+1 => 101
+101 customer.
+---> MapReduce---- MR jobs... Hadoop processing being done MR jobs.
+MR jobs used to written in Java--- Mappers and Reducers..
+----Bigdata is there org, we should process this data to get insights and to make money...
+HIVE- datawarehouse in big data and this is used to write MR jobs through HQL(hive Query laguage - mysql -db2 - oracle)
+-----
+
+-------------
+Hadoop - framework
+HDFS - to save data - storage
+HIVE  - HQL to read/write 
+MR jobs - applications which we write for processing hdfs data.
+
+
+
+
+
+
+
+
 
